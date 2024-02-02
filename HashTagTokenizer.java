@@ -40,14 +40,22 @@ public class HashTagTokenizer {
         if (hashtag.isEmpty()) {
             return ;
         }
- 
-        int N = hashtag.length();
+		int N = hashtag.length();
+ 		boolean found = false ;
+
 		hashtag = hashtag.toLowerCase();
+		int startIndex = 0 ;
         for (int i = 1; i <= N; i++) {
-			if(existInDictionary(hashtag.substring(0,i),dictionary)){
-				 breakHashTag(hashtag.substring(i),dictionary);
-			}
+			startIndex++;
+			if (existInDictionary(hashtag.substring(0, i), dictionary)) {
+				System.out.println(hashtag.substring(0, i));
+				break;
+				}
+			else{
+				breakHashTag(hashtag.substring(startIndex), dictionary);
+				}
         }
+
 
     }
 
