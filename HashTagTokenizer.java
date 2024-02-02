@@ -42,13 +42,13 @@ public class HashTagTokenizer {
         }
  
         int N = hashtag.length();
-
+		hashtag = hashtag.toLowerCase();
         for (int i = 1; i <= N; i++) {
 			if(existInDictionary(hashtag.substring(0,i),dictionary)){
-				breakHashTag(hashtag.substring(i),dictionary);
+				 breakHashTag(hashtag.substring(i),dictionary);
 			}
-			else return;
         }
+
     }
 
 }
