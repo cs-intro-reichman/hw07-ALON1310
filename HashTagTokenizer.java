@@ -25,14 +25,12 @@ public class HashTagTokenizer {
 	public static boolean existInDictionary(String word, String []dictionary) {
 		// Your code here
 		String lowerCase = word.toLowerCase();
-		for (String i : dictionary){
-			if(i.equals(lowerCase)) return true;
+
+		for(int i = 0 ; i < dictionary.length ; i++){
+			if(dictionary[i].equals(lowerCase)) {
+				return true;
+			}
 		}
-//		for(int i = 0 ; i < dictionary.length ; i++){
-//			if(dictionary[i].equals(lowerCase)) {
-//				return true;
-//			}
-//		}
 		return false;
 	}
 
@@ -44,7 +42,7 @@ public class HashTagTokenizer {
         }
 		int N = hashtag.length();
 
-        for (int i = 1; i < N; i++) {
+        for (int i = 1; i <= N; i++) {
 
 			if (existInDictionary(hashtag.substring(0, i) , dictionary)) {
 				System.out.println(hashtag.substring(0, i));
