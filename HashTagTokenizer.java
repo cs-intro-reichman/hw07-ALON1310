@@ -15,22 +15,24 @@ public class HashTagTokenizer {
 		In in = new In(fileName);
 // Your code here
 		for(int i = 0 ; i < dictionary.length ; i++){
-			dictionary[i] = in.readString();
+				dictionary[i] = in.readString();
+
 		}
-		in.close();
 
 		return dictionary;
 	}
 
 	public static boolean existInDictionary(String word, String []dictionary) {
 		// Your code here
-
-
-		for(int i = 0 ; i < dictionary.length ; i++){
-			if(dictionary[i]==word) {
-				return true;
-			}
+		String lowerCase = word.toLowerCase();
+		for (String i : dictionary){
+			if(i.equals(lowerCase)) return true;
 		}
+//		for(int i = 0 ; i < dictionary.length ; i++){
+//			if(dictionary[i].equals(lowerCase)) {
+//				return true;
+//			}
+//		}
 		return false;
 	}
 
@@ -41,19 +43,19 @@ public class HashTagTokenizer {
             return ;
         }
 		int N = hashtag.length();
- 		boolean found = false ;
+		String remaining ;
 
-		hashtag = hashtag.toLowerCase();
-		int startIndex = 0 ;
-        for (int i = 1; i <= N; i++) {
-			startIndex++;
-			if (existInDictionary(hashtag.substring(0, i), dictionary)) {
+        for (int i = 1; i < N; i++) {
+
+			String text = hashtag.substring(0, i) ;
+			remaining = hashtag.substring(i);
+
+			if (existInDictionary(text , dictionary)) {
 				System.out.println(hashtag.substring(0, i));
-				break;
-				}
-			else{
-				breakHashTag(hashtag.substring(startIndex), dictionary);
-				}
+				breakHashTag(remaining ,dictionary);
+			break;
+			}
+
         }
 
 
