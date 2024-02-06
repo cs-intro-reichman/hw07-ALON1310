@@ -22,13 +22,15 @@ public class SpellChecker {
 		// Your code goes here
 		int a = word1.length();
 		int b = word2.length();
+		String word1ToLower = word1.toLowerCase();
+		String word2ToLower = word2.toLowerCase();
 		if(b==0) return a;
 		if(a==0) return b;
-		if(word1.charAt(0)==word2.charAt(0)){
-			return levenshtein(tail(word1),tail(word2));
+		if(word1ToLower.charAt(0)==word2ToLower.charAt(0)){
+			return levenshtein(tail(word1ToLower),tail(word2ToLower));
 		}
-		String tailA = tail(word1);
-		String tailB = tail(word2);
+		String tailA = tail(word1ToLower);
+		String tailB = tail(word2ToLower);
 		return 1 + Math.min(Math.min(levenshtein(tailA,word2),levenshtein(tailB,word1)),levenshtein(tailA,tailB));
 
 
@@ -50,6 +52,7 @@ public class SpellChecker {
 
 	public static String spellChecker(String word, int threshold, String[] dictionary) {
 		// Your code goes here
+
 		int min = levenshtein(dictionary[0],word);
 		int distance ;
 		String newWord = "" ;
