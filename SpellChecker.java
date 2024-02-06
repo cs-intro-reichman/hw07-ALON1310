@@ -60,7 +60,7 @@ public class SpellChecker {
 				newWord = i ;
 			}
 		}
-		if(min>=threshold) return word;
+		if(min>threshold) return word;
 		return newWord ;
 	}
 
